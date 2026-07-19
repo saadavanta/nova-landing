@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://nimble-code-nova-path.base44.app/api/:path*"
+    }
+  ]
+}
