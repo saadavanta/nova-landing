@@ -7,6 +7,7 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 import PublicLayout from '@/components/layout/PublicLayout';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import AdminRoute from '@/components/AdminRoute';
 import AdminLayout from '@/components/admin/AdminLayout';
 import StudentLayout from '@/components/student/StudentLayout';
 import AdminDashboard from '@/pages/admin/AdminDashboard';
@@ -74,6 +75,13 @@ const AuthenticatedApp = () => {
       </Route>
       <Route path="/login" element={<Login />} />
       <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
+        <Route element={<StudentLayout />}>
+          <Route path="/student" element={<StudentDashboard />} />
+          <Route path="/student/course" element={<StudentDashboard />} />
+          <Route path="/student/profile" element={<StudentProfile />} />
+        </Route>
+      </Route>
+      <Route element={<AdminRoute />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/enrollments" element={<AdminEnrollments />} />
@@ -83,11 +91,6 @@ const AuthenticatedApp = () => {
           <Route path="/admin/testimonials" element={<AdminTestimonials />} />
           <Route path="/admin/faqs" element={<AdminFAQs />} />
           <Route path="/admin/announcements" element={<AdminAnnouncements />} />
-        </Route>
-        <Route element={<StudentLayout />}>
-          <Route path="/student" element={<StudentDashboard />} />
-          <Route path="/student/course" element={<StudentDashboard />} />
-          <Route path="/student/profile" element={<StudentProfile />} />
         </Route>
       </Route>
       <Route path="*" element={<PageNotFound />} />
