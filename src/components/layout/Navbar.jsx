@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code2, LogIn, UserPlus, Rocket } from 'lucide-react';
+import { Menu, X, Code2, LogIn, UserPlus, Rocket, LayoutDashboard, LogOut } from 'lucide-react';
 import UrgencyBanner from '@/components/sections/UrgencyBanner';
+import { useAuth } from '@/lib/AuthContext';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -15,6 +16,8 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const { isAuthenticated, user, logout } = useAuth();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -23,6 +26,14 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const handleLogout = () => {
+    logout(false);
+    setMobileOpen(false);
+    navigate('/');
+  };
+
+  const dashboardPath = user?.role === 'admin' ? '/admin' : '/student';
 
   return (
     <>
@@ -70,24 +81,45 @@ export default function Navbar() {
 
             {/* Desktop Buttons */}
             <div className="hidden items-center gap-2 lg:flex">
-              <Link
-                to="/login"
-                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-              >
-                <LogIn className="h-4 w-4" />
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-primary/20 bg-white/60 px-3 py-2 text-sm font-semibold text-primary transition-all hover:bg-primary/5"
-              >
-                <UserPlus className="h-4 w-4" />
-                Register
-              </Link>
-              <Link to="/register" className="btn-primary !px-4 !py-2 text-sm">
-                <Rocket className="h-4 w-4" />
-                Enroll Now
-              </Link>
+              {isAuthenticated ? (
+                <>
+                  <Link
+                    to={dashboardPath}
+                    className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                  >
+                    <LayoutDashboard className="h-4 w-4" />
+                    Dashboard
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-destructive/20 px-3 py-2 text-sm font-semibold text-destructive transition-all hover:bg-destructive/5"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                  >
+                    <LogIn className="h-4 w-4" />
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-primary/20 bg-white/60 px-3 py-2 text-sm font-semibold text-primary transition-all hover:bg-primary/5"
+                  >
+                    <UserPlus className="h-4 w-4" />
+                    Register
+                  </Link>
+                  <Link to="/register" className="btn-primary !px-4 !py-2 text-sm">
+                    <Rocket className="h-4 w-4" />
+                    Enroll Now
+                  </Link>
+                </>
+              )}
             </div>
 
             {/* Mobile Toggle */}
@@ -131,12 +163,25 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <hr className="my-4 border-border" />
-                <Link to="/login" onClick={() => setMobileOpen(false)} className="btn-secondary w-full">
-                  <LogIn className="h-4 w-4" /> Login
-                </Link>
-                <Link to="/register" onClick={() => setMobileOpen(false)} className="btn-primary w-full">
-                  <Rocket className="h-4 w-4" /> Enroll Now
-                </Link>
+                {isAuthenticated ? (
+                  <>
+                    <Link to={dashboardPath} onClick={() => setMobileOpen(false)} className="btn-secondary w-full">
+                      <LayoutDashboard className="h-4 w-4" /> Dashboard
+                    </Link>
+                    <button onClick={handleLogout} className="btn-primary w-full !bg-destructive">
+                      <LogOut className="h-4 w-4" /> Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login" onClick={() => setMobileOpen(false)} className="btn-secondary w-full">
+                      <LogIn className="h-4 w-4" /> Login
+                    </Link>
+                    <Link to="/register" onClick={() => setMobileOpen(false)} className="btn-primary w-full">
+                      <Rocket className="h-4 w-4" /> Enroll Now
+                    </Link>
+                  </>
+                )}
               </div>
             </motion.div>
           </motion.div>

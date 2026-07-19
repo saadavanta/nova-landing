@@ -8,6 +8,7 @@ import ScrollToTop from './components/ScrollToTop';
 import PublicLayout from '@/components/layout/PublicLayout';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import AdminLayout from '@/components/admin/AdminLayout';
+import StudentLayout from '@/components/student/StudentLayout';
 import AdminDashboard from '@/pages/admin/AdminDashboard';
 import AdminEnrollments from '@/pages/admin/AdminEnrollments';
 import AdminCourses from '@/pages/admin/AdminCourses';
@@ -16,6 +17,8 @@ import AdminMessages from '@/pages/admin/AdminMessages';
 import AdminTestimonials from '@/pages/admin/AdminTestimonials';
 import AdminFAQs from '@/pages/admin/AdminFAQs';
 import AdminAnnouncements from '@/pages/admin/AdminAnnouncements';
+import StudentDashboard from '@/pages/student/StudentDashboard';
+import StudentProfile from '@/pages/student/StudentProfile';
 import Home from '@/pages/Home';
 import About from '@/pages/About';
 import Courses from '@/pages/Courses';
@@ -80,6 +83,11 @@ const AuthenticatedApp = () => {
           <Route path="/admin/testimonials" element={<AdminTestimonials />} />
           <Route path="/admin/faqs" element={<AdminFAQs />} />
           <Route path="/admin/announcements" element={<AdminAnnouncements />} />
+        </Route>
+        <Route element={<StudentLayout />}>
+          <Route path="/student" element={<StudentDashboard />} />
+          <Route path="/student/course" element={<StudentDashboard />} />
+          <Route path="/student/profile" element={<StudentProfile />} />
         </Route>
       </Route>
       <Route path="*" element={<PageNotFound />} />
