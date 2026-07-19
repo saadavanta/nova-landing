@@ -1,0 +1,40 @@
+{
+  "name": "FAQ",
+  "type": "object",
+  "properties": {
+    "question": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Enrollment",
+        "Payments",
+        "Courses",
+        "Certificates",
+        "Technical Support",
+        "General"
+      ],
+      "default": "General"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Published",
+        "Draft"
+      ],
+      "default": "Published"
+    }
+  },
+  "required": [
+    "question",
+    "answer"
+  ]
+}

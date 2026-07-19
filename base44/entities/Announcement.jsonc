@@ -1,0 +1,42 @@
+{
+  "name": "Announcement",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "audience": {
+      "type": "string",
+      "enum": [
+        "All Students",
+        "Selected Course",
+        "Individual Student"
+      ],
+      "default": "All Students"
+    },
+    "publish_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiry_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Expired",
+        "Draft"
+      ],
+      "default": "Active"
+    }
+  },
+  "required": [
+    "title",
+    "message"
+  ]
+}

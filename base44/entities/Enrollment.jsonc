@@ -1,0 +1,112 @@
+{
+  "name": "Enrollment",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "mobile_number": {
+      "type": "string"
+    },
+    "whatsapp_number": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [
+        "Male",
+        "Female",
+        "Other",
+        "Prefer not to say"
+      ]
+    },
+    "date_of_birth": {
+      "type": "string",
+      "format": "date"
+    },
+    "education_level": {
+      "type": "string",
+      "enum": [
+        "School Student",
+        "College Student",
+        "University Student",
+        "Graduate",
+        "Beginner",
+        "Other"
+      ]
+    },
+    "selected_course": {
+      "type": "string"
+    },
+    "course_fee": {
+      "type": "number"
+    },
+    "course_duration": {
+      "type": "string"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "JazzCash",
+        "Easypaisa"
+      ]
+    },
+    "transaction_id": {
+      "type": "string"
+    },
+    "sender_mobile": {
+      "type": "string"
+    },
+    "payment_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "payment_notes": {
+      "type": "string"
+    },
+    "payment_screenshot": {
+      "type": "string"
+    },
+    "registration_id": {
+      "type": "string"
+    },
+    "enrollment_status": {
+      "type": "string",
+      "enum": [
+        "Pending Approval",
+        "Payment Pending",
+        "Payment Under Review",
+        "Approved",
+        "Rejected",
+        "Suspended",
+        "Inactive"
+      ],
+      "default": "Payment Under Review"
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "Pending",
+        "Under Review",
+        "Approved",
+        "Rejected"
+      ],
+      "default": "Under Review"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "mobile_number",
+    "city",
+    "education_level",
+    "selected_course"
+  ]
+}

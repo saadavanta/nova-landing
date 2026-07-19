@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://codenovaacademy.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://codenovaacademy.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://codenovaacademy.com/courses</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://codenovaacademy.com/courses/full-stack-web-development</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://codenovaacademy.com/courses/frontend-development</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://codenovaacademy.com/courses/backend-development</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://codenovaacademy.com/courses/social-media-marketing-canva</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://codenovaacademy.com/courses/it-basics</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://codenovaacademy.com/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://codenovaacademy.com/faq</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://codenovaacademy.com/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://codenovaacademy.com/register</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://codenovaacademy.com/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://codenovaacademy.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://codenovaacademy.com/refund-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

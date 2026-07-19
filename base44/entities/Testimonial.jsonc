@@ -1,0 +1,49 @@
+{
+  "name": "Testimonial",
+  "type": "object",
+  "properties": {
+    "student_name": {
+      "type": "string"
+    },
+    "course": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "review": {
+      "type": "string"
+    },
+    "photo": {
+      "type": "string"
+    },
+    "graduation_year": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Published",
+        "Pending",
+        "Rejected"
+      ],
+      "default": "Published"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "student_name",
+    "course",
+    "rating",
+    "review"
+  ]
+}
